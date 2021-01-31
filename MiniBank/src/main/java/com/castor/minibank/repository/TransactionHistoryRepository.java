@@ -11,6 +11,6 @@ import com.castor.minibank.entity.TransactionHistory;
 @Repository
 public interface TransactionHistoryRepository extends JpaRepository<TransactionHistory, Integer> {
 
-	@Query(value = "SELECT * FROM trans_history WHERE fk_user = ?1 " , nativeQuery = true)
+	@Query(value = "SELECT * FROM trans_history WHERE fk_user = ?1 ORDER BY id DESC;" , nativeQuery = true)
 	List<TransactionHistory> getAllByUserId(Long id);
 }
