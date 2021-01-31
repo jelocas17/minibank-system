@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>MiniBank - Login</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/libs/bootstrap/css/bootstrap.css}">
+</head>
+<body class="bg-light">
+
+  <div class="container-fluid d-inline-block">
+    <div class="card w-25 mx-auto mt-5">
+      <div class="card-body">
+        <form th:action="@{/login}" method="post">
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control">
+          </div>
+          <a th:href="@{/signup}">Sign up</a>
+          <button type="submit" class="btn btn-primary float-right">Login</button>
+        </form>
+      </div>
+    </div>
+    <div class="row flex-row justify-content-center mt-3">
+    	<div th:if=${param.logout} class="form-group row error">
+    		<div class="alert alert-success" role="alert">
+            	<p class="text-center" th:inline="text">Successfully Logout User</p>
+            </div>
+        </div>
+        <div th:if=${param.error} class="form-group row error">
+    		<div class="alert alert-danger" role="alert">
+            	<p class="text-center" th:inline="text">Invalid Credentials</p>
+            </div>
+        </div>
+        <div th:if=${param.newuser} class="form-group row error">
+    		<div  th:if="${param.newuser[0] == 'success'}" class="alert alert-success" role="alert">
+            	<p class="text-center" th:inline="text">Registration Successful</p>
+            </div>
+            <div  th:if="${param.newuser[0] == 'duplicate'}" class="alert alert-warning" role="alert">
+            	<p class="text-center" th:inline="text">Email already taken</p>
+            </div>
+            <div  th:if="${param.newuser[0] == 'fail'}" class="alert alert-success" role="alert">
+            	<p class="text-center" th:inline="text">Registration Unsuccessful</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript" th:src="@{/libs/jquery/dist/jquery.js}"></script>
+  <script type="text/javascript" th:src="@{/libs/bootstrap/js/bootstrap.js}"></script>
+</body>
+</html>

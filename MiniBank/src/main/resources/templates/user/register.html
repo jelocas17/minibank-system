@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>MiniBank - Login</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/libs/bootstrap/css/bootstrap.css}">
+</head>
+<body class="bg-light">
+
+  <div class="container-fluid d-inline-block">
+    <div class="card w-25 mx-auto mt-5">
+      <div class="card-body">
+        <form th:action="@{/signup}" th:object="${user}" method="post">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" th:field="*{email}" class="form-control" pattern=".{8,50}" title="Please input 8 to 50 characters" required="required">
+          </div>
+          <div class="form-group">
+            <label for=""firstname"">Firstname</label>
+            <input type="text" th:field="*{firstName}" class="form-control" pattern=".{4,50}" title="Please input 4 to 50 characters" required="required">
+          </div>
+          <div class="form-group">
+            <label for="middleName">Middle name</label>
+            <input type="text" th:field="*{middleName}" class="form-control" pattern=".{4,50}" title="Please input 4 to 50 characters" required="required">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Lastname</label>
+            <input type="text" th:field="*{lastName}" class="form-control" pattern=".{4,50}" title="Please input 4 to 50 characters" required="required">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" th:field="*{password}" class="form-control" pattern=".{8,50}" title="Please input 8 to 50 characters" required="required">
+          </div>
+          <a href="/login">Back</a>
+          <button type="submit" class="btn btn-primary float-right">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" th:src="@{/libs/jquery/dist/jquery.js}"></script>
+  <script type="text/javascript" th:src="@{/libs/bootstrap/js/bootstrap.js}"></script>
+</body>
+</html>
